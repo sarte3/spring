@@ -7,8 +7,12 @@
 <title>Insert title here</title>
 </head>
 <body>
-	my.jsp입니다 ${name}
-	<img src="resources/1.jpg"><br>
-	<img src="img/2.jpg">
+이름 : ${mdto.name}<br>
+나이 : ${mdto.age }<br>
+전화 : ${mdto.phone }<br>
+급여 : ${mdto.pay }<br>
+별명 : ${mdto.nick}<br>
+취미 : ${mdto.hobby}<br>
+
 </body>
 </html>

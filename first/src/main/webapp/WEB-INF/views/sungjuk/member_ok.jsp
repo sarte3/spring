@@ -6,9 +6,10 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-<body>
-	my.jsp입니다 ${name}
-	<img src="resources/1.jpg"><br>
-	<img src="img/2.jpg">
+<body>  <!-- /sungjuk/member_ok.jsp -->
+  이름 : ${sdto.name }<p>
+  나이 : ${sdto.age } <p>
+  전화 : ${sdto.phone }  <p>
+  합계 : ${sdto.kor+sdto.eng+sdto.mat }  <p>
 </body>
 </html>

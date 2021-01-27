@@ -6,9 +6,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-<body>
-	my.jsp입니다 ${name}
-	<img src="resources/1.jpg"><br>
-	<img src="img/2.jpg">
+<body><!-- list.jsp -->
+list.jsp : ${name}
 </body>
 </html>

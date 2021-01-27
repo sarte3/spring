@@ -1,4 +1,4 @@
-package kr.co.first;
+package kr.co.board;
 
 import java.text.DateFormat;
 import java.util.Date;
@@ -10,7 +10,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
 
 /**
  * Handles requests for the application home page.
@@ -34,32 +33,7 @@ public class HomeController {
 		
 		model.addAttribute("serverTime", formattedDate );
 		
-		return "/main/index"; //브라우저에 나타낼 문서
-	}
-	
-	@RequestMapping("/my") //my, my.do
-	public ModelAndView my(ModelAndView mav)
-	{
-		String name="홍길동";
-		mav.addObject("name", name);
-		mav.setViewName("/my");
-		return mav;
-	}
-	
-	@RequestMapping(value = "/first", method = RequestMethod.GET)
-	public String first()
-	{
-		return "/first";
-	}
-	
-	@RequestMapping("/your.do") // your.do
-	public String your(Model model) 
-	{
-		// 게시판 list
-		// 읽어오는 동작이 이루어진다
-		String name="배트맨";
-		model.addAttribute("name", name);
-		return "/your";
+		return "home";
 	}
 	
 }
