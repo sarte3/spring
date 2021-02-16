@@ -16,7 +16,7 @@
   /* window.onload=function()
   {
   	    var ck=0;
-    	setInterval(function()
+    	setInterval(function() //setInterval(함수, 밀리초)
     	{
     		if(ck%2 == 0)
     			document.getElementById("first_in").innerHTML="서울·경기·인천 &nbsp;<b style='color:purple'>샛별배송  </b>";
