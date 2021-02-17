@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybats-3-mapper.dtd">
+<mapper namespace="kr.co.kurly.dao.ProductDao">
+	<select id="get_dae" resultType="kr.co.kurly.dto.DaeDto">
+		select * from dae order by code asc
+	</select>
+	<select id="get_jung" resultType="kr.co.kurly.dto.JungDto">
+		select * from jung where daecode=#{param1} order by code asc
+	</select>
+</mapper>
