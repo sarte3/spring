@@ -1,10 +1,9 @@
 package kr.co.kurly.dto;
 
-public class JungDto 
-{
-	private int id;
-	private String code, title, deacode;
-	
+public class JungDto {
+    private int id;
+    private String code,title,daecode;
+    
 	public int getId() {
 		return id;
 	}
@@ -23,12 +22,12 @@ public class JungDto
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public String getDeacode() {
-		return deacode;
+	public String getDaecode() {
+		return daecode;
 	}
-	public void setDeacode(String deacode) {
-		this.deacode = deacode;
+	public void setDaecode(String daecode) {
+		this.daecode = daecode;
 	}
-	
-	
+    
+    
 }

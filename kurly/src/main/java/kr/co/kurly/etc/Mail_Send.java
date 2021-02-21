@@ -22,8 +22,8 @@ public class Mail_Send
 	public int setEmail(String email, String subject, String body) throws Exception 
 	{
 	     String host = "smtp.naver.com"; 
-	     final String username = "bcity"; // 송신자 네이버 아이디
-	     final String password = "dngk12dhfkrh!"; // 송신자 네이버 비밀번호  
+	     final String username = "goalki2"; // 송신자 네이버 아이디
+	     final String password = "ruddud2021!!"; // 송신자 네이버 비밀번호  
 	     int port=465;
 	     int state=0;
 
@@ -48,7 +48,7 @@ public class Mail_Send
 	     session.setDebug(true); //for debug
 
 	     Message mimeMessage = new MimeMessage(session);
-	     mimeMessage.setFrom(new InternetAddress("bcity@naver.com")); // 송신자 네이버 주소
+	     mimeMessage.setFrom(new InternetAddress("goalki2@naver.com")); // 송신자 네이버 주소
 	     mimeMessage.setRecipient(Message.RecipientType.TO, new InternetAddress(recipient));
 	     mimeMessage.setSubject(subject);
 	     mimeMessage.setText(body);

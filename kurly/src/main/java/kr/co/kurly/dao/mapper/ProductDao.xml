@@ -2,11 +2,42 @@
 <!DOCTYPE mapper
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybats-3-mapper.dtd">
+
 <mapper namespace="kr.co.kurly.dao.ProductDao">
-	<select id="get_dae" resultType="kr.co.kurly.dto.DaeDto">
-		select * from dae order by code asc
-	</select>
-	<select id="get_jung" resultType="kr.co.kurly.dto.JungDto">
-		select * from jung where daecode=#{param1} order by code asc
-	</select>
+ <select id="get_dae" resultType="kr.co.kurly.dto.DaeDto">
+   select * from dae order by code asc
+ </select>
+ <select id="get_jung" resultType="kr.co.kurly.dto.JungDto">
+   select * from jung where daecode=#{param1} order by code asc
+ </select>
+ <select id="get_maxpcode" resultType="Integer">
+   select ifnull(right(max(pcode),4),0) as num 
+   from product 
+   where pcode like concat('%',#{param1},'%')
+ </select>
+ <insert id="pwrite_ok" parameterType="kr.co.kurly.dto.ProductDto">
+   insert into product(mimg,title,subtitle,price,pdan,pwe,bgubun,made,pal,gihan,
+   su,pcon,pimg,pinfo,halin,writeday,pcode)
+   values(#{mimg},#{title},#{subtitle},#{price},#{pdan},#{pwe},#{bgubun},#{made},
+   #{pal},#{gihan},#{su},#{pcon},#{pimg},#{pinfo},#{halin},now(),#{pcode})
+ </insert>
+ <select id="get_pro_list" resultType="kr.co.kurly.dto.ProductDto">
+   select * from product 
+   where pcode like concat(#{param1},'%')
+   order by id desc
+ </select>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
 </mapper>

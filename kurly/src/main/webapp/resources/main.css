@@ -96,6 +96,35 @@
    #fourth #mini {
      width:30px;
    }
+   #fourth li {
+     list-style-type:none;
+   }
+   #fourth #main_menu {
+     position:relative;
+     z-index:10;
+     width:130px;
+     height:360px;
+ 
+   }
+   #fourth #main_submenu {
+     padding-left:0px;
+     font-size:13px;
+     position:absolute;
+     visibility:hidden; 
+     background:white;
+   }
+   #fourth .inner_menu {
+     visibility:hidden;
+     position:absolute;
+     left:115px;
+     top:0px;
+     background:white;
+     padding-left:30px;
+     width:100px;
+     height:200px;
+     
+   }
+   
    #fifth {
      width:1100px;
      height:400px;

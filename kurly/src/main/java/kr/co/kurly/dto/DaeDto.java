@@ -1,10 +1,9 @@
 package kr.co.kurly.dto;
 
-public class DaeDto 
-{
-	private int id;
-	private String code, title;
-	
+public class DaeDto {
+     private int id;
+     private String code,title;
+     
 	public int getId() {
 		return id;
 	}
@@ -23,6 +22,6 @@ public class DaeDto
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	
-	
+     
+     
 }

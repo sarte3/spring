@@ -12,8 +12,28 @@ function first_hide()
 	//document.getElementById("first").style.display="none";
 	$("#first").slideUp(1000);
 }
+
+// 전체카테고리 부분
+function view_main()
+{
+	document.getElementById("main_submenu").style.visibility="visible";
+}
+function hide_main()
+{
+	document.getElementById("main_submenu").style.visibility="hidden";
+}
+
+function view_inner(n)
+{
+    document.getElementsByClassName("inner_menu")[n].style.visibility="visible";	
+}
+function hide_inner(n)
+{
+    document.getElementsByClassName("inner_menu")[n].style.visibility="hidden";	
+}
 // default.jsp에서 main.js를 사용하려면 아래와 같이 코딩후 default.jsp에서   body=first_in()으로 하면 됨
-/*function first_in()
+/*
+function first_in()
 {
 	 var ck=0;
  	setInterval(function()

@@ -1,11 +1,18 @@
 package kr.co.kurly.dto;
 
-public class ProductDto 
-{
-	private int id, price, bgubun, gihan, su, halin;
-	private String mimg, title, subtitle, pdan, pwe;
-	private String made, pal, pcon, pimg, pinfo, writeday;
-	
+public class ProductDto {
+    private int id,price,bgubun,gihan,su,halin;
+    private String mimg,title,subtitle,pdan,pwe;
+    private String made,pal,pcon,pimg,pinfo,writeday,pcode;
+    
+    
+    
+	public String getPcode() {
+		return pcode;
+	}
+	public void setPcode(String pcode) {
+		this.pcode = pcode;
+	}
 	public int getId() {
 		return id;
 	}
@@ -108,6 +115,6 @@ public class ProductDto
 	public void setWriteday(String writeday) {
 		this.writeday = writeday;
 	}
-	
-	
+    
+    
 }
