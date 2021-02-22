@@ -87,6 +87,12 @@
 /*      background:green; */
      margin:auto;
    }
+   
+   #fourth > ul 
+   {
+   	height:40px;
+   }
+   
    #fourth > ul > li {
      display:inline-block; /* li태그를 inline형으로 변경 */
      width:150px;
@@ -144,9 +150,9 @@
      margin:auto;
    }
    #eighth {
+  	 clear:both;
      width:1100px;
      height:550px;
-     background:#89a469;
      margin:auto;
    }
 

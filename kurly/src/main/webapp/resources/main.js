@@ -103,3 +103,31 @@ function email_dupcheck(form)
 	   }
 }
 
+//pro_content.jsp
+function suchange(n, p)
+{
+	// 상품의 숫자를 증가, 감소 => 상품 금액도 변경
+	var su = parseInt(document.getElementById("con_su").innerText)
+	
+	if(n==0) //감소
+	{
+		if(su > 1)
+		{
+			su--;
+			document.getElementById("con_su").innerText=su;
+			document.getElementById("con_price").innerText=comma_change(su*p);
+		}
+	}
+	else //증가
+	{
+		su++;
+		document.getElementById("con_su").innerText=su;
+		document.getElementById("con_price").innerText=comma_change(su*p);
+	}
+	
+}
+
+function comma_change(num) // 숫자에 콤마를 넣고 리턴해주는 함수
+{
+	return new Intl.NumberFormat().format(num);
+}

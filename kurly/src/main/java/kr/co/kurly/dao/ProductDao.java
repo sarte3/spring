@@ -12,4 +12,5 @@ public interface ProductDao {
    public Integer get_maxpcode(String pcode); 
    public void pwrite_ok(ProductDto pdto);
    public ArrayList<ProductDto> get_pro_list(String pcode);
+   public ProductDto get_pro_content(String pcode);
 }

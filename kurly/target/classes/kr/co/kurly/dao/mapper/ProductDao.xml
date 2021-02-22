@@ -26,7 +26,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    where pcode like concat(#{param1},'%')
    order by id desc
  </select>
- 
+ <select id="get_pro_content" resultType="kr.co.kurly.dto.ProductDto">
+ 	select * from product where pcode=#{param1}
+ </select>
  
  
  
