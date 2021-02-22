@@ -127,7 +127,23 @@ function suchange(n, p)
 	
 }
 
+// pro_content에서 상품그림바꾸기
+function img_change(img, li)
+{
+	
+	document.getElementById('con_img').src="../resources/pimg/"+img;
+	var con_li=document.getElementsByClassName("con_li");
+	for(i=0;i<con_li.length;i++)
+	{
+		con_li[i].style.background="#eeeeee";
+	}
+	li.style.background="#ffffff";
+}
+
+
 function comma_change(num) // 숫자에 콤마를 넣고 리턴해주는 함수
 {
 	return new Intl.NumberFormat().format(num);
 }
+
+
