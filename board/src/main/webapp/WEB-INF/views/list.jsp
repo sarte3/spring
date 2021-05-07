@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>게시판 글 보기</h1>
+<h1 align="center">게시판 글 보기</h1>
 <table width="700" align="center" border="1">
 	<tr>
 		<td>이름</td>
@@ -19,7 +19,7 @@
 	<c:forEach var="dto" items="${list}">
 	<tr>
 		<td>${dto.name }</td>
-		<td>${dto.title }</td>
+		<td><a href="content?id=${dto.id}">${dto.title }</a></td>
 		<td>${dto.readnum }</td>
 		<td>${dto.writeday }</td>
 	</tr>

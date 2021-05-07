@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybats-3-mapper.dtd">
+
+<mapper namespace="kr.co.emp.dao.EmpDao">
+	<insert id="write" parameterType="kr.co.emp.dto.EmpDto">
+		insert into emp(empno, job, name, tel, email) values(#{empno}, #{job}, #{name}, #{tel}, #{email})
+	</insert>
+	<select id="list" resultType="kr.co.emp.dto.EmpDto">
+		select * from emp where ${param1} like concat('%', #{param2}, '%') order by name asc 
+	</select>
+	<select id="content" resultType="kr.co.emp.dto.EmpDto">
+		select * from emp where id=#{param1}
+	</select>
+	<update id="update" parameterType="kr.co.emp.dto.EmpDto">
+		update emp set empno=#{empno}, job=#{job}, name=#{name}, tel=#{tel}, email=#{email} where id=#{id}
+	</update>
+	<delete id="delete">
+		delete from emp where id=#{param1}
+	</delete>
+	<select id="checkEmpno" resultType="Integer">
+		select count(*) from emp where empno=#{param1}
+	</select>
+</mapper>

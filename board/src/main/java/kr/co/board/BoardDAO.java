@@ -70,4 +70,62 @@ public class BoardDAO
 		
 		return list;
 	}
+	
+	public BoardDTO content(String id) throws Exception
+	{
+		sql = "select * from board where id ="+id;
+		
+		stmt = conn.createStatement();
+		
+		rs = stmt.executeQuery(sql);
+		
+		BoardDTO bdto = new BoardDTO();
+		
+		if(rs.next()) 
+		{
+			bdto.setContent(rs.getString("content"));
+			bdto.setId(rs.getInt("id"));
+			bdto.setName(rs.getString("name"));
+			bdto.setPwd(rs.getString("pwd"));
+			bdto.setReadnum(rs.getInt("readnum"));
+			bdto.setTitle(rs.getString("title"));
+			bdto.setWriteday(rs.getString("writeday"));
+		}
+		
+		return bdto;
+	}
+	
+	public void update(BoardDTO bdto) throws Exception//폼 입력값 => 테이블에 저장
+	{
+		// 쿼리 작성
+		sql = "update board set name=?, title=?, content=?, pwd=? where id=?";
+		
+		// 심부름꾼 생성
+		pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, bdto.getName());
+		pstmt.setString(2, bdto.getTitle());
+		pstmt.setString(3, bdto.getContent());
+		pstmt.setString(4, bdto.getPwd());
+		pstmt.setInt(5, bdto.getId());
+				
+		// 쿼리 실행
+		pstmt.executeUpdate();
+		
+		pstmt.close();
+		conn.close();
+	}
+	
+	public void delete(String id) throws Exception
+	{
+		sql = "delete from board where id = "+id;
+		
+		stmt = conn.createStatement();
+		
+		stmt.executeUpdate(sql);
+		
+		stmt.close();
+		conn.close();
+		
+	}
+	
 }

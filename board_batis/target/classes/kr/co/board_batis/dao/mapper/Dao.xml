@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybats-3-mapper.dtd">
+<mapper namespace="kr.co.board_batis.dao.Dao">
+	<!-- 쿼리 작성 -->
+	<insert id="write_ok" parameterType="kr.co.board_batis.dto.Dto">
+		insert into board(name, content, pwd, title, writeday) 
+		values(#{name}, #{content}, #{pwd}, #{title}, now() )
+	</insert>
+	<!-- 모든 내용을 다 읽어오는 쿼리 -->
+	<select id="list" resultType="kr.co.board_batis.dto.Dto">
+		<!-- select * from board order by id desc-->
+		select * from board order by id desc limit #{param}, 10;
+	</select>
+	<select id="getPageCnt" resultType="Integer">
+		select count(*) as cnt from board
+	</select>
+	<select id="content" resultType="kr.co.board_batis.dto.Dto">
+		select * from board where id=#{param1}
+	</select>
+	<update id="readnum">
+		update board set readnum=readnum+1 where id=#{param1}
+	</update>
+	<update id="update" parameterType="kr.co.board_batis.dto.Dto">
+		update board set name=#{name}, title=#{title}, pwd=#{pwd}, content=#{content} where id=#{id}
+	</update>
+	<delete id="delete">
+		delete from board where id=#{id} 
+	</delete>
+	<select id="pwd_check" resultType="Integer">
+		select count(*) cnt from board where id=#{param1} and pwd=#{param2}
+	</select>
+	<select id="login_ok" parameterType="kr.co.board_batis.dto.MemberDto" resultType="kr.co.board_batis.dto.MemberDto">
+		select * from member where userid=#{userid} and pwd=#{pwd}
+	</select>
+	<select id="slist" resultType="kr.co.board_batis.dto.Dto">
+		select * from board where ${param1} like concat('%', #{param2}, '%')
+	</select>
+</mapper>
