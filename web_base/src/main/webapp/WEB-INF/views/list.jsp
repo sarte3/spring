@@ -76,9 +76,10 @@ function check_del()
 	}
 }
 
-function chkNo(id)
+function chkNo(form)
 {
-	alert(id);
+	var id=form.id.value;
+	alert(id)
 	
 	var eno=$("#eno"+id).val();
 	var url="ajax_chk?eno="+eno;
@@ -103,11 +104,12 @@ function chkNo(id)
 }
 
 	
-function check(id)
+function check(form)
 {
 	
-	alert(id);
-
+	var id=form.id.value;
+	alert(id)
+	
 	if(!(document.getElementById('empText'+id).innerText=='사용 가능합니다'))
 	{
 		alert('직원 번호를 확인해주세요!')
@@ -233,12 +235,12 @@ function check(id)
 						<h3 class="modal-title">직원 정보 수정</h5>
 					</div>
 					<div class="modal-body">
-					<form method="post" action="update_ok" onsubmit="return check('${dto.id}');">
+					<form method="post" action="update_ok" onsubmit="return check(this.form);">
 					<input type="hidden" name="id" id="id${dto.id}" value="${dto.id }">
 					<table class="table">
 						<tr>
 							<td>직원번호</td>
-							<td><input type="text" name="eno" id="eno${dto.id}" value="${dto.eno }"><a href="javascript:chkNo('${dto.id}');">중복체크</a><span id="empText${dto.id }"></span></td>
+							<td><input type="text" name="eno" id="eno${dto.id}" value="${dto.eno }"><button class="btn btn-default" onclick="javascript:chkNo(this.form);">중복체크</button><span id="empText${dto.id }"></span></td>
 						</tr>
 						<tr>
 							<td>직원명</td>
