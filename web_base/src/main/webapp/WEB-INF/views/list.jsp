@@ -76,93 +76,7 @@ function check_del()
 	}
 }
 
-function chkNo(form)
-{
-	var id=form.id.value;
-	alert(id)
-	
-	var eno=$("#eno"+id).val();
-	var url="ajax_chk?eno="+eno;
-	
-	var chk=new XMLHttpRequest();
-	chk.open("get", url);
-	chk.send();
-	
-	chk.onreadystatechange=function()
-	{
-		if(chk.readyState==4)
-		{
-			
-			if(chk.responseText==1){
-				$("#empText"+id).text()='중복된 직원번호입니다';
-			}
-			else{
-				$("#empText"+id).text()='사용 가능합니다';
-			}
-		}
-	}
-}
 
-	
-function check(form)
-{
-	
-	var id=form.id.value;
-	alert(id)
-	
-	if(!(document.getElementById('empText'+id).innerText=='사용 가능합니다'))
-	{
-		alert('직원 번호를 확인해주세요!')
-		return false;
-	}
-	
-	if($('#job'+id).val()=='')
-	{
-		alert('직급을 입력해주세요!')
-		return false;
-	}
-	
-	if($('#name'+id).val()=='')
-	{
-		alert('이름을 입력해주세요!')
-		return false;
-	}
-	
-	if($('#tel'+id).val()=='')
-	{
-		alert('전화번호를 입력해주세요!')
-		return false;
-	}
-	
-	if($('#email'+id).val()=='')
-	{
-		alert('이메일을 입력해주세요!')
-		return false;
-	}
-	
-	var nameRule = /^[가-힣]{2,10}|[a-zA-Z]{2,10}\s[a-zA-Z]{2,10}$/;
-	
-	if(!nameRule.test($('#name'+id).val())) {            
-		alert('이름을 확인해주세요!')
-		return false;
-	}
-	
-	var emailRule = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
-	
-	if(!emailRule.test($('#email'+id).val())) {            
-		alert('이메일 형식을 확인해주세요!')
-		return false;
-	}
-
-	var telRule = /^\d{2,3}-\d{3,4}-\d{4}$/;
-	
-	if(!telRule.test($('#tel'+id).val())) {            
-		alert('전화번호 형식을 확인해주세요!')
-		return false;
-	}
-	
-	return true;
-}
 
 </script>
 </head>
@@ -215,6 +129,7 @@ function check(form)
 	<tr>
 		<th></th>
 		<th></th>
+		<th></th>
 		<th>직원번호</th>
 		<th>직원명</th>
 		<th>직급</th>
@@ -224,7 +139,6 @@ function check(form)
 	</tr>
 	<c:forEach var="dto" items="${list}">
 		<tr>
-		<td>
 		<td><div class="modal fade" id="updateModal${dto.id}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 			<div class="modal-dialog" role="document">
 				<div class="modal-content">
@@ -235,12 +149,12 @@ function check(form)
 						<h3 class="modal-title">직원 정보 수정</h5>
 					</div>
 					<div class="modal-body">
-					<form method="post" action="update_ok" onsubmit="return check(this.form);">
+					<form method="post" action="update_ok" onsubmit="return check('${dto.id}');">
 					<input type="hidden" name="id" id="id${dto.id}" value="${dto.id }">
 					<table class="table">
 						<tr>
 							<td>직원번호</td>
-							<td><input type="text" name="eno" id="eno${dto.id}" value="${dto.eno }"><button class="btn btn-default" onclick="javascript:chkNo(this.form);">중복체크</button><span id="empText${dto.id }"></span></td>
+							<td><input type="text" name="eno" id="eno${dto.id}" value="${dto.eno }"><input type="button" class="btn btn-default" onclick="chkNo('${dto.id}');" value="중복체크"><span id="empText${dto.id }"></span></td>
 						</tr>
 						<tr>
 							<td>직원명</td>
@@ -377,6 +291,93 @@ function check(form)
 	function open(id)
 	{
 		$('#contentModal'+id).modal("show");
+	}
+	
+	function chkNo(id)
+	{
+		alert(id)
+		
+		var eno=$("#eno"+id).val();
+		var url="ajax_chk?eno="+eno;
+		
+		var chk=new XMLHttpRequest();
+		chk.open("get", url);
+		chk.send();
+		
+		chk.onreadystatechange=function()
+		{
+			if(chk.readyState==4)
+			{
+				
+				if(chk.responseText==1){
+					$("#empText"+id).text('중복된 직원번호입니다');
+				}
+				else{
+					$("#empText"+id).text('사용 가능합니다');
+				}
+			}
+		}
+	}
+
+		
+	function check(id)
+	{
+		
+		alert(id);
+		
+		if(!(document.getElementById('empText'+id).innerText=='사용 가능합니다'))
+		{
+			alert('직원 번호를 확인해주세요!')
+			return false;
+		}
+		
+		if($('#job'+id).val()=='')
+		{
+			alert(id)
+			alert('직급을 입력해주세요!')
+			return false;
+		}
+		
+		if($('#name'+id).val()=='')
+		{
+			alert('이름을 입력해주세요!')
+			return false;
+		}
+		
+		if($('#tel'+id).val()=='')
+		{
+			alert('전화번호를 입력해주세요!')
+			return false;
+		}
+		
+		if($('#email'+id).val()=='')
+		{
+			alert('이메일을 입력해주세요!')
+			return false;
+		}
+		
+		var nameRule = /^[가-힣]{2,10}|[a-zA-Z]{2,10}\s[a-zA-Z]{2,10}$/;
+		
+		if(!nameRule.test($('#name'+id).val())) {            
+			alert('이름을 확인해주세요!')
+			return false;
+		}
+		
+		var emailRule = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+		
+		if(!emailRule.test($('#email'+id).val())) {            
+			alert('이메일 형식을 확인해주세요!')
+			return false;
+		}
+
+		var telRule = /^\d{2,3}-\d{3,4}-\d{4}$/;
+		
+		if(!telRule.test($('#tel'+id).val())) {            
+			alert('전화번호 형식을 확인해주세요!')
+			return false;
+		}
+		
+		return true;
 	}
 	
 </script>
